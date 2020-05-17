@@ -144,11 +144,12 @@ namespace SonarLint.VisualStudio.Integration.Vsix
                     return __VSERRORCATEGORY.EC_MESSAGE;
 
                 case Issue.Types.Severity.Major:
-                case Issue.Types.Severity.Critical:
                     return __VSERRORCATEGORY.EC_WARNING;
+                case Issue.Types.Severity.Critical:
+                    return __VSERRORCATEGORY.EC_ERROR;
 
                 case Issue.Types.Severity.Blocker:
-                    return environmentSettings.TreatBlockerSeverityAsError() ? __VSERRORCATEGORY.EC_ERROR : __VSERRORCATEGORY.EC_WARNING;
+                    return environmentSettings.TreatBlockerSeverityAsError() ? __VSERRORCATEGORY.EC_ERROR : __VSERRORCATEGORY.EC_ERROR;
 
                 default:
                     // We don't want to throw here - we're being called by VS to populate
